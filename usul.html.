@@ -124,7 +124,8 @@
     <section class="card">
       <h2>🧠 اختبر نفسك</h2>
       <p>اختار الإجابة الصحيحة، وبعدها شوف نتيجتك.</p>
-      <div id="quiz"></div>
+      <div id="quiz">جاري تحميل الأسئلة...</div>
+<p>لو ظهرت الرسالة دي، يبقى مكان الأسئلة موجود.</p>
       <p id="feedback" aria-live="polite"></p>
       <button class="button" id="next" hidden>السؤال التالي ←</button>
       <button class="button" id="restart" hidden>إعادة الاختبار</button>
