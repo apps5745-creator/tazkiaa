@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b63">
+  <title>أصول الدين | تزكية</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f8f6;
+      color: #243b35;
+      line-height: 1.9;
+    }
+
+    header {
+      background: #176b63;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      margin: 30px auto;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #176b63, #248b79);
+      color: white;
+      padding: 28px;
+      border-radius: 22px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 { margin: 0 0 8px; }
+
+    .tag {
+      display: inline-block;
+      background: #e6b84b;
+      color: #243b35;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .panel {
+      background: white;
+      padding: 22px;
+      margin: 18px 0;
+      border-radius: 18px;
+      border: 1px solid #e0eae5;
+      box-shadow: 0 5px 18px #163d3210;
+    }
+
+    .panel h2 { margin-top: 0; }
+
+    .notice {
+      background: #fff8e5;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .lesson {
+      display: block;
+      width: 100%;
+      text-align: right;
+      border: 1px solid #dcece5;
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #176b63;
+      font: inherit;
+      font-weight: bold;
+    }
+
+    .lesson.active {
+      background: #eaf6f0;
+      border-color: #176b63;
+    }
+
+    .lesson-content {
+      display: none;
+      padding: 18px;
+      background: #f8fbf9;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .lesson-content.show { display: block; }
+
+    .primary {
+      background: #176b63;
+      color: white;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: bold;
+    }
+
+    .answer {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 9px 0;
+      text-align: right;
+      border: 1px solid #dcece5;
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .answer:disabled { cursor: default; }
+
+    #feedback {
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #66766f;
+    }
+
+    @media (max-width: 600px) {
+      .hero, .panel { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html">← الصفحة الرئيسية</a>
+    <strong>تَزكية 📚</strong>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="tag">الصف الأول الإعدادي الأزهري</span>
+      <h1>📖 أصول الدين</h1>
+      <p>رحلتك لفهم العقيدة الإسلامية خطوة بخطوة.</p>
+      <p>اقرأ الدرس، افهم الفكرة، ثم اختبر نفسك.</p>
+    </section>
+
+    <section class="panel">
+      <h2>📚 دروس المادة</h2>
+      <p>اختر درسًا لعرض محتواه.</p>
+
+      <button class="lesson active" data-lesson="welcome">
+        الدرس التمهيدي: كيف نتعلم أصول الدين؟
+      </button>
+
+      <div class="lesson-content show" id="welcome">
+        <h3>أهلًا بك في رحلة التعلم!</h3>
+        <p>
+          أصول الدين من العلوم التي تساعد المسلم على معرفة عقيدته
+          وفهم ما يؤمن به، والتفكر في دلائل قدرة الله تعالى.
+        </p>
+        <p>
+          في كل درس سنقرأ شرحًا مبسطًا، ونراجع أهم الأفكار،
+          ثم نجيب عن أسئلة قصيرة لقياس الفهم.
+        </p>
+        <div class="notice">
+          هذا درس تمهيدي من إعداد منصة تزكية، وليس نقلًا حرفيًا
+          من الكتاب المدرسي. سنرتب الدروس التالية وفق فهرس الكتاب الرسمي.
+        </div>
+      </div>
+
+      <button class="lesson" data-lesson="goals">
+        أهدافنا في دراسة المادة
+      </button>
+
+      <div class="lesson-content" id="goals">
+        <h3>ماذا سنتعلم؟</h3>
+        <ul>
+          <li>فهم المصطلحات الأساسية بطريقة واضحة.</li>
+          <li>التمييز بين الفكرة الصحيحة والمعلومة غير الدقيقة.</li>
+          <li>مراجعة الدروس باستخدام أسئلة متنوعة.</li>
+          <li>الرجوع إلى الكتاب المقرر عند دراسة كل موضوع.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>📝 اختبر فهمك</h2>
+      <p id="question">ما الهدف من الدرس التمهيدي في منصة تزكية؟</p>
+      <div id="answers">
+        <button class="answer" data-correct="false">
+          حفظ الكلمات دون فهمها
+        </button>
+        <button class="answer" data-correct="true">
+          فهم طريقة التعلم ومراجعة الأفكار
+        </button>
+        <button class="answer" data-correct="false">
+          الانتقال إلى الاختبار دون دراسة
+        </button>
+      </div>
+      <p id="feedback" aria-live="polite"></p>
+      <button class="primary" id="retry">إعادة السؤال</button>
+    </section>
+
+    <section class="panel">
+      <h2>📘 الكتاب الرسمي</h2>
+      <p>
+        يمكنك الرجوع إلى كتاب أصول الدين للصف الأول الإعدادي الأزهري
+        من بوابة قطاع المعاهد الأزهرية.
+      </p>
+      <a
+        href="https://mtrl.azhar.gov.eg/education/books-2026/prep/%D8%A7%D8%B5%D9%88%D9%84%20%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20-%20%D8%A7%D9%84%D8%B5%D9%81%20%D8%A7%D9%84%D8%A3%D9%88%D9%84%20%D8%A7%D9%84%D8%A7%D8%B9%D8%AF%D8%A7%D8%AF%D9%8A.pdf"
+        target="_blank"
+        rel="noopener"
+      >فتح الكتاب الرسمي ↗</a>
+    </section>
+  </main>
+
+  <footer>© Tazkiaa — نتعلم لننمو</footer>
+
+  <script>
+    const lessonButtons = document.querySelectorAll(".lesson");
+
+    lessonButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        lessonButtons.forEach(function(item) {
+          item.classList.remove("active");
+        });
+
+        document.querySelectorAll(".lesson-content").forEach(function(content) {
+          content.classList.remove("show");
+        });
+
+        button.classList.add("active");
+
+        const target = document.getElementById(button.dataset.lesson);
+        if (target) target.classList.add("show");
+      });
+    });
+
+    const answers = document.querySelectorAll(".answer");
+    const feedback = document.getElementById("feedback");
+
+    function resetQuestion() {
+      answers.forEach(function(answer) {
+        answer.disabled = false;
+        answer.style.background = "white";
+        answer.style.borderColor = "#dcece5";
+      });
+      feedback.textContent = "";
+    }
+
+    answers.forEach(function(answer) {
+      answer.addEventListener("click", function() {
+        answers.forEach(function(item) {
+          item.disabled = true;
+        });
+
+        if (answer.dataset.correct === "true") {
+          answer.style.background = "#e3f6e8";
+          feedback.textContent = "إجابة صحيحة! أحسنت 👏";
+          feedback.style.color = "#176b43";
+        } else {
+          answer.style.background = "#fde9e7";
+          feedback.textContent = "ليست الإجابة الصحيحة. حاول المراجعة ثم أعد السؤال.";
+          feedback.style.color = "#a52a2a";
+
+          answers.forEach(function(item) {
+            if (item.dataset.correct === "true") {
+              item.style.borderColor = "#176b63";
+            }
+          });
+        }
+      });
+    });
+
+    document.getElementById("retry").addEventListener("click", resetQuestion);
+  </script>
+</body>
+</html>
