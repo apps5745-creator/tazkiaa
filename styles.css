@@ -671,3 +671,40 @@ dialog::backdrop {
   }
 
 }
+
+/* تنسيق قسم المواد الشرعية */
+.sharia-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.sharia-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #dcece5;
+  border-radius: 16px;
+  color: #176b63;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sharia-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(23, 107, 99, 0.12);
+}
+
+.subject-card.sharia {
+  background: linear-gradient(135deg, #effaf4, #fff9e9);
+  border: 1px solid #dcece5;
+}
+
+.sharia-item:focus-visible {
+  outline: 3px solid #e6b84b;
+  outline-offset: 3px;
+}
