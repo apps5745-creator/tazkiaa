@@ -278,7 +278,32 @@
   <footer>© Tazkiaa — نتعلم لننمو</footer>
 
   <script>
-    const lessonButtons = document.querySelectorAll(".lesson");
+    
+document.addEventListener("click", function (event) {
+  const button = event.target.closest(".lesson");
+  if (!button) return;
+
+  const targetId = button.dataset.lesson;
+  const target = document.getElementById(targetId);
+
+  if (!target) return;
+
+  document.querySelectorAll(".lesson-content").forEach(function (content) {
+    content.classList.remove("show");
+  });
+
+  document.querySelectorAll(".lesson").forEach(function (item) {
+    item.classList.remove("active");
+  });
+
+  target.classList.add("show");
+  button.classList.add("active");
+
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
 
     lessonButtons.forEach(function(button) {
       button.addEventListener("click", function() {
