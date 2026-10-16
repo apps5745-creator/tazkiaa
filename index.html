@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="تزكية - منصة تعليمية ذكية للصف الرابع الابتدائي">
+
+  <title>تزكية | نتعلم لننمو</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <a class="logo" href="#">تَزكية<span>.</span></a>
+
+    <nav>
+
+      <a href="#subjects">المواد</a>
+
+      <a href="#about">عن المنصة</a>
+
+      <a href="#subscription">الاشتراك</a>
+
+    </nav>
+
+    <button class="button button-light" id="loginBtn">
+
+‎      دخول الطالب
+
+    </button>
+
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <span class="tag">منصة الصف الرابع الابتدائي</span>
+
+        <h1>مش بس تحفظ..<br><span>افهم واتعلم بذكاء!</span></h1>
+
+        <p>
+
+‎          رحلة تعليمية ممتعة تجمع بين الشرح المبسط
+
+‎          والتدريبات التفاعلية، لمساعدة طفلك على التقدم
+
+‎          خطوة بخطوة.
+
+        </p>
+
+        <a class="button" href="#subjects">ابدأ رحلة التعلم ←</a>
+
+        <div class="features">
+
+          <span>✓ تدريبات تفاعلية</span>
+
+          <span>✓ متابعة المستوى</span>
+
+        </div>
+
+      </div>
+
+      <div class="learning-card">
+
+        <div class="illustration">📚</div>
+
+        <span class="tag">رحلتك التعليمية</span>
+
+        <h2>أهلًا يا بطل!</h2>
+
+        <p>جاهز تتعلم حاجة جديدة النهارده؟</p>
+
+        <div class="progress-label">
+
+          <span>ابدأ أول درس</span>
+
+          <strong>⭐ 0</strong>
+
+        </div>
+
+        <div class="progress"><span></span></div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="subjects">
+
+      <span class="tag">ابدأ من هنا</span>
+
+      <h2>اختار مادتك المفضلة</h2>
+
+      <p class="section-description">
+
+‎        اتعلم بطريقتك واختبر نفسك بعد كل درس.
+
+      </p>
+
+      <div class="subject-grid">
+
+        <article class="subject-card math">
+
+          <div class="subject-icon">➗</div>
+
+          <span class="tag">الرياضيات</span>
+
+          <h3>الأرقام بقت أسهل!</h3>
+
+          <p>تدرب على الحساب والعمليات الرياضية بطريقة ممتعة.</p>
+
+          <button class="button start-quiz" data-subject="math">
+
+‎            ابدأ التدريب ←
+
+          </button>
+
+        </article>
+
+        <article class="subject-card arabic">
+
+          <div class="subject-icon">أب</div>
+
+          <span class="tag">اللغة العربية</span>
+
+          <h3>اقرأ وافهم وعبّر!</h3>
+
+          <p>طور مهارات القراءة والقواعد والمفردات.</p>
+
+          <button class="button start-quiz" data-subject="arabic">
+
+‎            ابدأ التدريب ←
+
+          </button>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="section about" id="about">
+
+      <span class="tag">فكرتنا</span>
+
+      <h2>التعلم مش مجرد درجات</h2>
+
+      <p>
+
+‎        هدف تزكية هو مساعدة الطالب على فهم المعلومة،
+
+‎        والتدرب عليها، ومعرفة نقاط قوته وما يحتاج إلى مراجعته.
+
+      </p>
+
+    </section>
+
+    <section class="section subscription" id="subscription">
+
+      <span class="tag">خطوتك القادمة</span>
+
+      <h2>مستعد تبدأ رحلة تزكية؟</h2>
+
+      <p>الاشتراكات ستتاح بعد تجهيز الحسابات والدفع الإلكتروني.</p>
+
+      <button class="button" id="subscribeBtn">
+
+‎        اعرف المزيد عن الاشتراك
+
+      </button>
+
+      <p class="notice">
+
+‎        نسخة تجريبية: لا توجد مدفوعات أو حسابات حقيقية حتى الآن.
+
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <a class="logo" href="#">تَزكية<span>.</span></a>
+
+    <p>© <span id="year"></span> Tazkiaa — نتعلم لننمو</p>
+
+  </footer>
+
+  <dialog id="quizDialog">
+
+    <button id="closeQuiz" class="close-button" aria-label="إغلاق">×</button>
+
+    <span class="tag" id="quizSubject"></span>
+
+    <h2 id="quizTitle">اختبر نفسك</h2>
+
+    <p id="question"></p>
+
+    <div id="answers" class="answers"></div>
+
+    <p id="feedback" aria-live="polite"></p>
+
+    <button class="button" id="nextBtn" disabled>السؤال التالي</button>
+
+  </dialog>
+
+  <dialog id="messageDialog">
+
+    <button id="closeMessage" class="close-button" aria-label="إغلاق">×</button>
+
+    <h2 id="messageTitle">أهلًا بك في تزكية</h2>
+
+    <p id="messageText"></p>
+
+    <button class="button" id="okBtn">تمام</button>
+
+  </dialog>
+
+  <script src="app.js"></script>
