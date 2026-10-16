@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مبادئ علم التوحيد | تزكية</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f3f8f5;
+      color: #203d38;
+      line-height: 1.9;
+    }
+    header {
+      background: #176b63;
+      color: white;
+      padding: 18px;
+      text-align: center;
+    }
+    header a { color: white; text-decoration: none; }
+    main {
+      max-width: 760px;
+      margin: 24px auto;
+      padding: 16px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      box-shadow: 0 5px 18px #173d3810;
+    }
+    .tag {
+      display: inline-block;
+      background: #e1f3e9;
+      color: #176b63;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    h1, h2 { color: #176b63; }
+    .example {
+      background: #fff5d9;
+      padding: 14px;
+      border-radius: 12px;
+    }
+    .question {
+      border-top: 1px solid #e4ece7;
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+    .answer {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 9px 0;
+      background: #f5faf7;
+      border: 1px solid #d5e8dd;
+      border-radius: 12px;
+      font-size: 16px;
+      text-align: right;
+      cursor: pointer;
+    }
+    .answer:disabled { cursor: default; }
+    .correct { background: #d9f4df; border-color: #25834a; }
+    .wrong { background: #ffe5e0; border-color: #bd5144; }
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      background: #176b63;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    #feedback { font-weight: bold; }
+    footer { text-align: center; padding: 20px; color: #63756f; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">📚 <strong>تَزكية</strong> — نتعلم لننمو</a>
+  </header>
+
+  <main>
+    <section class="card">
+      <span class="tag">الصف الأول الإعدادي الأزهري</span>
+      <h1>🌟 مبادئ علم التوحيد</h1>
+      <p>أهلًا يا بطل! في الدرس ده هنتعرف على معنى علم التوحيد وليه بنتعلمه.</p>
+    </section>
+
+    <section class="card">
+      <h2>📖 أولًا: ما علم التوحيد؟</h2>
+      <p>
+        علم التوحيد هو العلم الذي نتعلم من خلاله العقائد الإسلامية،
+        ونتعرف على ما يجب اعتقاده في حق الله تعالى، وما يليق به سبحانه،
+        وفقًا لما يقرره المنهج الأزهري.
+      </p>
+      <div class="example">
+        <strong>💡 ببساطة:</strong>
+        نتعلم في هذا العلم أصول العقيدة الصحيحة، ونفهم الأدلة التي تساعدنا
+        على معرفة الحق والتمييز بين الاعتقاد الصحيح والخطأ.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🎯 ثانيًا: ما فائدة دراسة علم التوحيد؟</h2>
+      <ul>
+        <li>التعرف على أصول العقيدة الإسلامية.</li>
+        <li>فهم الأدلة المتعلقة بالعقائد.</li>
+        <li>تقوية الفهم الصحيح للإيمان.</li>
+      </ul>
+      <p class="example">
+        تذكّر: هذا شرح تعليمي مبسّط، وليس نقلًا حرفيًا لنص الكتاب.
+        سنطابق التفاصيل مع طبعة المنهج المعتمدة قبل نشر الدرس النهائي.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>🧠 اختبر نفسك</h2>
+      <p>اختار الإجابة الصحيحة، وبعدها شوف نتيجتك.</p>
+      <div id="quiz"></div>
+      <p id="feedback" aria-live="polite"></p>
+      <button class="button" id="next" hidden>السؤال التالي ←</button>
+      <button class="button" id="restart" hidden>إعادة الاختبار</button>
+    </section>
+
+    <a class="button" href="index.html">العودة إلى الصفحة الرئيسية</a>
+  </main>
+
+  <footer>© Tazkiaa — نتعلم لننمو</footer>
+
+  <script>
+    const questions = [
+      {
+        q: "ما الموضوع الأساسي لعلم التوحيد؟",
+        a: ["العقائد الإسلامية", "الحساب والهندسة", "قواعد الإملاء"],
+        c: 0,
+        hint: "فكّر في العلم الذي يدرس أصول العقيدة."
+      },
+      {
+        q: "من فوائد دراسة علم التوحيد:",
+        a: ["تعلم العمليات الحسابية", "فهم أصول العقيدة", "تعلم قواعد المرور"],
+        c: 1,
+        hint: "العلم يساعدنا على فهم العقيدة وأدلتها."
+      },
+      {
+        q: "هل الشرح الموجود هنا نقل حرفي من الكتاب؟",
+        a: ["نعم، حرفي بالكامل", "لا، هو شرح مبسّط"],
+        c: 1,
+        hint: "اقرأ الملاحظة الموجودة في الدرس."
+      }
+    ];
+
+    let index = 0;
+    let score = 0;
+    let answered = false;
+
+    const quiz = document.getElementById("quiz");
+    const feedback = document.getElementById("feedback");
+    const next = document.getElementById("next");
+    const restart = document.getElementById("restart");
+
+    function renderQuestion() {
+      answered = false;
+      feedback.textContent = "";
+      next.hidden = true;
+      quiz.innerHTML = "";
+
+      if (index >= questions.length) {
+        quiz.innerHTML =
+          "<h3>🎉 خلصت الاختبار!</h3><p>نتيجتك: " +
+          score + " من " + questions.length + "</p>";
+        restart.hidden = false;
+        return;
+      }
+
+      const item = questions[index];
+      const title = document.createElement("h3");
+      title.textContent = "السؤال " + (index + 1) + ": " + item.q;
+      quiz.appendChild(title);
+
+      item.a.forEach((text, i) => {
+        const btn = document.createElement("button");
+        btn.className = "answer";
+        btn.textContent = text;
+        btn.addEventListener("click", () => chooseAnswer(i, btn));
+        quiz.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(choice, selected) {
+      if (answered) return;
+      answered = true;
+      const item = questions[index];
+      const buttons = quiz.querySelectorAll(".answer");
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === item.c) btn.classList.add("correct");
+      });
+
+      if (choice === item.c) {
+        score++;
+        feedback.textContent = "أحسنت! إجابة صحيحة ⭐";
+        feedback.style.color = "#176b63";
+      } else {
+        selected.classList.add("wrong");
+        feedback.textContent = "حاول مرة أخرى. " + item.hint;
+        feedback.style.color = "#a34e42";
+      }
+
+      next.hidden = false;
+      next.textContent =
+        index === questions.length - 1 ? "عرض النتيجة" : "السؤال التالي ←";
+    }
+
+    next.addEventListener("click", () => {
+      index++;
+      renderQuestion();
+    });
+
+    restart.addEventListener("click", () => {
+      index = 0;
+      score = 0;
+      restart.hidden = true;
+      renderQuestion();
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>
