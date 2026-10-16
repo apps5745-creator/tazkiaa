@@ -708,3 +708,42 @@ dialog::backdrop {
   outline: 3px solid #e6b84b;
   outline-offset: 3px;
 }
+
+.sharia-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.sharia-subject {
+  background: #fff;
+  border: 1px solid #dcece5;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.sharia-subject summary {
+  padding: 16px;
+  color: #176b63;
+  font-weight: 700;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.sharia-subject[open] summary {
+  background: #effaf4;
+  border-bottom: 1px solid #dcece5;
+}
+
+.lesson-list {
+  padding: 16px;
+  line-height: 1.8;
+}
+
+.lesson-list a {
+  display: inline-block;
+  color: #176b63;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 8px;
+}
