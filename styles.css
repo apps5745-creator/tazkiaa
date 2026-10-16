@@ -747,3 +747,282 @@ dialog::backdrop {
   text-decoration: none;
   margin-top: 8px;
 }
+/* ===== Tazkiaa Modern Responsive Design ===== */
+:root {
+–green: #087f68;
+–dark: #153b35;
+–mint: #e7f7ef;
+–cream: #f8faf7;
+–muted: #667873;
+–white: #fff;
+–gold: #e8b653;
+}
+
+html {
+scroll-padding-top: 20px;
+}
+
+body {
+background: radial-gradient(ellipse at 90% 0%, rgba(226,245,235,.8), transparent 34%), var(–cream);
+color: var(–dark);
+font-size: 16px;
+}
+
+.header {
+max-width: 1200px;
+padding: 18px 28px;
+margin: 0 auto;
+position: relative;
+z-index: 2;
+}
+
+.logo {
+letter-spacing: -.5px;
+font-size: 30px;
+}
+
+nav {
+gap: 28px;
+font-weight: 700;
+}
+
+nav a {
+transition: color .2s ease;
+}
+
+.button {
+border-radius: 14px;
+padding: 13px 22px;
+box-shadow: 0 7px 18px rgba(8,127,104,.13);
+}
+
+.button-light {
+box-shadow: none;
+}
+
+.hero {
+max-width: 1150px;
+margin: 22px auto 76px;
+padding: clamp(28px,5vw,66px);
+border: 1px solid #e0eee5;
+border-radius: 32px;
+background: linear-gradient(125deg,#e4f6ed 0%,#f5f8ec 60%,#fff8e9 100%);
+box-shadow: 0 20px 55px rgba(25,65,52,.06);
+gap: clamp(25px,5vw,65px);
+}
+
+.hero h1 {
+letter-spacing: -1.2px;
+}
+
+.hero h1 span {
+color: #087f68;
+}
+
+.learning-card {
+border: 1px solid rgba(255,255,255,.9);
+box-shadow: 0 24px 55px rgba(25,65,52,.12);
+padding: 30px;
+}
+
+.illustration {
+display: grid;
+place-items: center;
+width: 100px;
+height: 100px;
+margin: 0 auto 16px;
+border-radius: 30px;
+background: linear-gradient(145deg,#fff0ce,#f7db9b);
+}
+
+.progress {
+margin-top: 8px;
+}
+
+.section {
+max-width: 1150px;
+margin-bottom: 82px;
+}
+
+.section > .tag,
+.about > .tag,
+.subscription > .tag {
+margin-bottom: 8px;
+}
+
+.section h2 {
+letter-spacing: -.5px;
+}
+
+.subject-grid {
+grid-template-columns: repeat(2,minmax(0,1fr));
+gap: 24px;
+align-items: stretch;
+}
+
+.subject-card {
+min-width: 0;
+padding: 30px;
+border-radius: 25px;
+border: 1px solid #e1ebe5;
+box-shadow: 0 10px 28px rgba(25,65,52,.045);
+transition: transform .22s ease,box-shadow .22s ease;
+}
+
+.subject-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 18px 38px rgba(25,65,52,.09);
+}
+
+.subject-card.sharia {
+grid-column: 1 / -1;
+}
+
+.subject-card h3 {
+font-size: 22px;
+}
+
+.subject-card p {
+font-size: 14px;
+}
+
+.subject-icon {
+border-radius: 20px;
+}
+
+.sharia-list {
+grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+}
+
+.sharia-subject {
+border-radius: 15px;
+}
+
+.sharia-subject summary {
+padding: 15px 17px;
+}
+
+.lesson-list a {
+text-decoration: underline;
+text-underline-offset: 3px;
+}
+
+.about,
+.subscription {
+border-radius: 28px;
+padding: clamp(26px,4vw,44px);
+}
+
+.about {
+background: linear-gradient(120deg,#e9f7ef,#f5f7ed);
+}
+
+.subscription {
+box-shadow: 0 12px 35px rgba(25,65,52,.04);
+}
+
+footer {
+max-width: 1150px;
+padding: 26px 28px;
+}
+
+dialog {
+box-shadow: 0 25px 80px rgba(10,40,32,.25);
+}
+
+:focus-visible {
+outline: 3px solid #e8b653;
+outline-offset: 3px;
+}
+
+@media (max-width:760px) {
+.header {
+padding: 14px 18px;
+gap: 10px;
+}
+
+.logo {
+font-size: 26px;
+}
+
+.header .button {
+padding: 10px 13px;
+font-size: 13px;
+}
+
+.hero {
+margin: 10px 12px 54px;
+padding: 30px 22px;
+border-radius: 25px;
+gap: 26px;
+}
+
+.hero h1 {
+font-size: clamp(32px,8.5vw,42px);
+letter-spacing: -.5px;
+}
+
+.hero-content > p {
+font-size: 14px;
+}
+
+.features {
+gap: 10px 16px;
+}
+
+.learning-card {
+max-width: 100%;
+padding: 23px;
+}
+
+.section {
+padding: 0 16px;
+margin-bottom: 56px;
+}
+
+.section h2 {
+font-size: 25px;
+}
+
+.subject-grid {
+grid-template-columns: minmax(0,1fr);
+gap: 16px;
+}
+
+.subject-card,
+.subject-card.sharia {
+grid-column: auto;
+padding: 23px;
+}
+
+.sharia-list {
+grid-template-columns: minmax(0,1fr);
+}
+
+.about,
+.subscription {
+padding: 24px 20px;
+}
+
+footer {
+padding: 22px 18px;
+}
+}
+
+@media (max-width:380px) {
+.header {
+flex-wrap: wrap;
+}
+
+.header .button {
+margin-inline-start: auto;
+}
+
+.hero h1 {
+font-size: 31px;
+}
+
+.subject-card {
+padding: 19px;
+}
+}
