@@ -1,3 +1,5 @@
+
+
 const quizzes = {
 
   math: {
@@ -32,7 +34,7 @@ const quizzes = {
 
       {
 
-        question: "معك ١٠٠ جنيه، واشتريت كتابًا بـ٣٥ جنيهًا. كم يتبقى؟",
+        question: "معك ١٠٠ جنيه واشتريت كتابًا بـ٣٥ جنيهًا. كم يتبقى؟",
 
         answers: ["٦٥", "٧٥", "٥٥", "٦٠"],
 
@@ -94,228 +96,232 @@ const quizzes = {
 
 };
 
-const quizDialog = document.getElementById("quizDialog");
+document.addEventListener("DOMContentLoaded", () => {
 
-const messageDialog = document.getElementById("messageDialog");
+  const quizDialog = document.getElementById("quizDialog");
 
-let currentQuiz;
+  const messageDialog = document.getElementById("messageDialog");
 
-let questionIndex = 0;
+  let currentQuiz = null;
 
-let score = 0;
+  let questionIndex = 0;
 
-let answered = false;
+  let score = 0;
 
-function showMessage(title, message) {
+  let answered = false;
 
-  document.getElementById("messageTitle").textContent = title;
+  function showMessage(title, message) {
 
-  document.getElementById("messageText").textContent = message;
+    document.getElementById("messageTitle").textContent = title;
 
-  messageDialog.showModal();
+    document.getElementById("messageText").textContent = message;
 
-}
-
-document.querySelectorAll(".start-quiz").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    startQuiz(button.dataset.subject);
-
-  });
-
-});
-
-function startQuiz(subject) {
-
-  currentQuiz = quizzes[subject];
-
-  questionIndex = 0;
-
-  score = 0;
-
-  document.getElementById("quizSubject").textContent =
-
-    currentQuiz.name;
-
-  document.getElementById("quizTitle").textContent =
-
-‎    "اختبر معلوماتك";
-
-  renderQuestion();
-
-  quizDialog.showModal();
-
-}
-
-function renderQuestion() {
-
-  answered = false;
-
-  const item = currentQuiz.questions[questionIndex];
-
-  document.getElementById("question").textContent =
-
-    item.question;
-
-  document.getElementById("feedback").textContent = "";
-
-  const nextButton = document.getElementById("nextBtn");
-
-  nextButton.disabled = true;
-
-  nextButton.textContent =
-
-    questionIndex === currentQuiz.questions.length - 1
-
-‎      ? "عرض النتيجة"
-
-‎      : "السؤال التالي ←";
-
-  const answersContainer = document.getElementById("answers");
-
-  answersContainer.replaceChildren();
-
-  item.answers.forEach((answer, index) => {
-
-    const button = document.createElement("button");
-
-    button.className = "answer";
-
-    button.textContent = answer;
-
-    button.addEventListener("click", () => {
-
-      selectAnswer(index, button);
-
-    });
-
-    answersContainer.appendChild(button);
-
-  });
-
-}
-
-function selectAnswer(index, selectedButton) {
-
-  if (answered) return;
-
-  answered = true;
-
-  const item = currentQuiz.questions[questionIndex];
-
-  const buttons = document.querySelectorAll(".answer");
-
-  const feedback = document.getElementById("feedback");
-
-  buttons.forEach((button, i) => {
-
-    button.disabled = true;
-
-    if (i === item.correct) {
-
-      button.classList.add("correct");
-
-    }
-
-  });
-
-  if (index === item.correct) {
-
-    score++;
-
-    feedback.textContent = "أحسنت! إجابة صحيحة ⭐";
-
-    feedback.style.color = "#176b63";
-
-  } else {
-
-    selectedButton.classList.add("wrong");
-
-    feedback.textContent = "حاول تفهم التلميح: " + item.hint;
-
-    feedback.style.color = "#a34e42";
+    messageDialog.showModal();
 
   }
 
-  document.getElementById("nextBtn").disabled = false;
+  function startQuiz(subject) {
 
-}
+    currentQuiz = quizzes[subject];
 
-document.getElementById("nextBtn").addEventListener("click", () => {
+    if (!currentQuiz) return;
 
-  if (questionIndex < currentQuiz.questions.length - 1) {
+    questionIndex = 0;
 
-    questionIndex++;
+    score = 0;
+
+    document.getElementById("quizSubject").textContent = currentQuiz.name;
+
+    document.getElementById("quizTitle").textContent = "اختبر معلوماتك";
 
     renderQuestion();
 
-    return;
+    quizDialog.showModal();
 
   }
 
-  const total = currentQuiz.questions.length;
+  function renderQuestion() {
 
-  quizDialog.close();
+    answered = false;
 
-  showMessage(
+    const item = currentQuiz.questions[questionIndex];
 
-‎    "خلصت التدريب! 🌟",
+    document.getElementById("question").textContent = item.question;
 
-‎    `نتيجتك ${score} من ${total}. ${
+    document.getElementById("feedback").textContent = "";
 
-      score === total
+    const nextButton = document.getElementById("nextBtn");
 
-‎        ? "ممتاز! أجبت عن كل الأسئلة بشكل صحيح."
+    nextButton.disabled = true;
 
-‎        : "راجع التلميحات وحاول مرة أخرى لتحسن نتيجتك."
+    nextButton.textContent =
 
-    }`
+      questionIndex === currentQuiz.questions.length - 1
 
-  );
+        ? "عرض النتيجة"
+
+        : "السؤال التالي ←";
+
+    const answersContainer = document.getElementById("answers");
+
+    answersContainer.replaceChildren();
+
+    item.answers.forEach((answer, index) => {
+
+      const button = document.createElement("button");
+
+      button.type = "button";
+
+      button.className = "answer";
+
+      button.textContent = answer;
+
+      button.addEventListener("click", () => {
+
+        selectAnswer(index, button);
+
+      });
+
+      answersContainer.appendChild(button);
+
+    });
+
+  }
+
+  function selectAnswer(index, selectedButton) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const item = currentQuiz.questions[questionIndex];
+
+    const buttons = document.querySelectorAll(".answer");
+
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach((button, i) => {
+
+      button.disabled = true;
+
+      if (i === item.correct) {
+
+        button.classList.add("correct");
+
+      }
+
+    });
+
+    if (index === item.correct) {
+
+      score++;
+
+      feedback.textContent = "أحسنت! إجابة صحيحة ⭐";
+
+      feedback.style.color = "#176b63";
+
+    } else {
+
+      selectedButton.classList.add("wrong");
+
+      feedback.textContent = "حاول مرة أخرى. التلميح: " + item.hint;
+
+      feedback.style.color = "#a34e42";
+
+    }
+
+    document.getElementById("nextBtn").disabled = false;
+
+  }
+
+  document.querySelectorAll(".start-quiz").forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      startQuiz(button.dataset.subject);
+
+    });
+
+  });
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+
+    if (!currentQuiz || !answered) return;
+
+    if (questionIndex < currentQuiz.questions.length - 1) {
+
+      questionIndex++;
+
+      renderQuestion();
+
+      return;
+
+    }
+
+    const total = currentQuiz.questions.length;
+
+    quizDialog.close();
+
+    showMessage(
+
+      "خلصت التدريب! 🌟",
+
+      `نتيجتك ${score} من ${total}. ${
+
+        score === total
+
+          ? "ممتاز! أجبت عن كل الأسئلة بشكل صحيح."
+
+          : "راجع التلميحات وحاول مرة أخرى لتحسن نتيجتك."
+
+      }`
+
+    );
+
+  });
+
+  document.getElementById("closeQuiz").addEventListener("click", () => {
+
+    quizDialog.close();
+
+  });
+
+  document.getElementById("closeMessage").addEventListener("click", () => {
+
+    messageDialog.close();
+
+  });
+
+  document.getElementById("okBtn").addEventListener("click", () => {
+
+    messageDialog.close();
+
+  });
+
+  document.getElementById("loginBtn").addEventListener("click", () => {
+
+    showMessage(
+
+      "دخول الطالب",
+
+      "تسجيل الدخول الحقيقي سنضيفه في المرحلة التالية."
+
+    );
+
+  });
+
+  document.getElementById("subscribeBtn").addEventListener("click", () => {
+
+    showMessage(
+
+      "اشتراك تزكية",
+
+      "الاشتراكات والمدفوعات غير مفعّلة بعد."
+
+    );
+
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
 
 });
-
-document.getElementById("closeQuiz").addEventListener("click", () => {
-
-  quizDialog.close();
-
-});
-
-document.getElementById("closeMessage").addEventListener("click", () => {
-
-  messageDialog.close();
-
-});
-
-document.getElementById("okBtn").addEventListener("click", () => {
-
-  messageDialog.close();
-
-});
-
-document.getElementById("loginBtn").addEventListener("click", () => {
-
-  showMessage(
-
-‎    "دخول الطالب",
-
-‎    "تسجيل الدخول الحقيقي سنضيفه في المرحلة التالية بعد تجهيز قاعدة البيانات."
-
-  );
-
-});
-
-document.getElementById("subscribeBtn").addEventListener("click", () => {
-
-  showMessage(
-
-‎    "اشتراك تزكية",
-
-‎    "الاشتراكات والمدفوعات غير مفعّلة بعد. سنضيفها بعد تجهيز الحسابات والدفع الآمن."
-
-  );
-
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
